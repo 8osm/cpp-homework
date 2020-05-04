@@ -25,9 +25,8 @@ int fibonacci(int n) {
 
 int main() {
     cout << factorial(7) << endl;
+    
     for (int i = 0; i < 15; ++i) {
         cout << fibonacci(i) << endl;
     }
-
-
 }
