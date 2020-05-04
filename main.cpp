@@ -2,55 +2,32 @@
 
 using namespace std;
 
-int factorial(int a){
-    int result = 1;
-    while (a>1){
-        result *= a--;
-    }
-    return result;
-}
-
-void fibonacciSequence(int stopOnIndex){
-    int prev = 0;
-    int lastPrev = 0;
-    int current = 1;
-    while(stopOnIndex>0){
-        cout<<current<<endl;
-        lastPrev = prev;
-        prev = current;
-        current = lastPrev + prev;
-        stopOnIndex--;
+int factorial(int n) {
+    if (n > 0) {
+        return n * factorial((n - 1));
+    } else {
+        return 1;
     }
 }
 
-int arithmProgrSum(int a1, int d, int n){
-    int result = 0;
-    int currentElement=a1;
-    for (int i = n; i > 0; --i) {
-        result += currentElement;
-        currentElement += d;
-        n--;
-    }
-    return result;
-}
+int fibonacci(int n) {
+    if (n < 0) return 0;
 
-int geomProgrSum(int a1, int q, int n){
-    int result = 0;
-    int currentElement=a1;
-    for (int i = n; i > 0; --i) {
-        result += currentElement;
-        currentElement *= q;
-        n--;
+    switch(n){
+        case 0:
+            return 0;
+        case 1:
+            return 1;
+        default:
+            return fibonacci(n - 1) + fibonacci(n - 2);
     }
-    return result;
 }
 
 int main() {
+    cout << factorial(7) << endl;
+    for (int i = 0; i < 15; ++i) {
+        cout << fibonacci(i) << endl;
+    }
 
-    cout<<"factorial: "<<factorial(3)<<endl;
-    fibonacciSequence(10);
-    cout<<"sum of first 100 natural numbers: "<<arithmProgrSum(1,1,100)<<endl;
-    cout<<"geometric progression sum: "<<geomProgrSum(2,3,10)<<endl;
-    return 0;
 
 }
